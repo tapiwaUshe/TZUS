@@ -1,0 +1,142 @@
+/* SCSS module for the menu button */
+.menu-btn{
+    position: absolute;
+    z-index: 3;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    @include ease-Out();
+
+    .btn-line{
+        width: 28px;
+        height: 3px;
+        /* Top 0, Right 0, Bottom 5, Left 0 */
+        margin: 0 0 5px 0;
+        background: set-Text-Color($primary-color);
+        @include ease-Out();
+    }
+
+    // The close motion SASS.
+    &.close{
+        transform: rotate(180deg);
+        .btn-line{
+            /* Grabs the [i]child of the nested class. */
+            // Line 1 - Rotate
+            &:nth-child(1){
+                background: $thirdary-color;
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            // Line 2 - Hide 
+            &:nth-child(2){
+                opacity: 0;
+            }
+            // Line 3 - Rotate
+            &:nth-child(3){
+                background: $thirdary-color;
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    }
+}
+
+// Menu Overlay
+.menu{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 0.9;
+    visibility: hidden;
+
+    // While the nested .show class is open. (Therefore button must be clicked). 
+    &.show{
+        visibility: visible;
+    }
+    // Selects .menu-Brand (because of the nested operator syntax)
+    // Could be because of inline spans.
+    &-Brand,
+    &-Nav{
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &-Nav{
+        margin: 0;
+        padding: 0;
+        background: darken($primary-color, 5);
+        list-style: none;
+        transform: translate3d(0, -100%, 0);
+        @include ease-Out();
+        &.show{
+            // Slide in from top.
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    // Branding Slide
+    &-Brand{
+        background: $primary-color;
+        transform: translate3d(0, 100%, 0);
+        @include ease-Out();
+
+        &.show{
+            // Slide in from bottom.
+            transform: translate3d(0, 0, 0);
+        }
+
+        .myPortrait{
+            width: 250px;
+            height: 250px;
+            background: url(TZUSLogo_2.png);
+            background-size: cover;
+            border-radius: 50%;
+            border: solid 3px $secondary-color;
+        }
+    }
+
+    .nav-Item{
+       transform: translate3d(600px, 0, 0);
+       @include ease-Out();
+       &.show{
+           //Slide in from right
+           transform:translate3d(0, 0, 0);
+        }
+        &.current > a span{
+            color: #FFF;
+        }
+        &.current a:hover span.thirdary{
+            color: $secondary-color;  
+        }
+    }
+
+    .nav-Link{
+        display: inline-block;
+        position: relative;
+        font-size: 30px;
+        text-transform: uppercase;
+        padding: 1rem 0;
+        font-weight: 300;
+        color: $secondary-color;
+        text-decoration: none;
+        @include ease-Out();
+
+        a:hover{
+            transform: translateX(30);
+        }
+        a:hover span.thirdary{
+            color: $secondary-color;  
+        }
+    }
+} /* Close .menu */
+
+// Delay Each Nav Item Slide by 0.01s.
+@for $x from 1 through 4{
+    .nav-Item:nth-child(#{$x}){
+        transition-delay: $x * 0.1s;
+    }
+}

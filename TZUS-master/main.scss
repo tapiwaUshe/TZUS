@@ -1,0 +1,237 @@
+/* Must import @mixins from modularized _config.scss file. */
+@import 'config'; 
+@import 'menu';
+/* No underscore OR .scss extension!*/
+
+/* '&' Ampersand is the SCSS nest operator, for more specific class/id grouping. */
+/* Element CSS Declaration */
+
+// <<<<< ------ BEGIN INDEX.HTML ------ >>>>>
+/* Any Element in CSS */
+*{ box-sizing: border-box; }
+
+/* CSS Properties for body tag. */
+body{
+    @include background(); @include bG_();
+    color: set-Text-Color($primary-color);
+    background: $primary-color; height: 100; margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.5;
+}
+
+/* CSS Properties for 3 Header levels. */
+h1, h2, h3{
+    margin: 0; font-weight: 400;
+    /* Nest the CLASS of lg-heading. Add properties */
+    &.lg-Heading{ font-size: 6rem; }
+    &.sm-Heading{
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($primary-color, 2), 2);
+        border: 0.5px;
+    }
+}
+
+/* Any links <a> tags */
+a{
+    color: #FFFFFF; text-decoration: none;
+    &:hover{
+        color: $secondary-color;
+        /* Parameters of Transition: WHAT -  Time - Motion */
+        @include ease-Out();
+        span.thirdary{
+            @include ease-Out();
+            color: $secondary-color;
+        }
+    }
+}
+
+// Global header properties.
+header{ position: fixed; z-index: 2; width: 100%; }
+
+// .secondary class assigns a color.
+.secondary { color: $secondary-color; }
+ 
+// span .thirdary assigns a color to a span with class name: thirdary.
+span.thirdary{ color: $thirdary-color; }
+
+
+/* Main div element */
+main{
+    padding: 4rem;
+    /* Calculate 100vh and substract by the footer size to KEEP footer place. */
+    min-height: calc(100vh - 60px);
+    /* Any class of "icons" within main div. */
+    .socIcons{
+        margin-top: 1rem;
+        /* Any <a> link tag within main, within class icons. */
+        a{
+            padding:0.4rem;
+            /* On hover on any link in main, within class icons */
+            &:hover{
+                color: $secondary-color;
+            }
+        }
+    }
+    /* A Nested property of any main with id "home" */
+    &#home{
+    overflow: hidden;
+        h1{
+            margin-top: 20vh;
+        }
+    }
+}
+// <<<<< ------ END INDEX.HTML ------ >>>>>
+
+// <<<<< ------ BEGIN ABOUTME.HTML ------ >>>>>
+.info{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas:
+    // Access class: .bio-Img, .bio .bio *
+    'bio-Img bio bio'
+    // Access classes: .skill_[1-3] 
+    'skill_1 skill_2 skill_3';
+    grid-template-columns: repeat(3, 1fr);
+
+    & .bio-Img{
+        grid-area: bio-Img;
+        margin: auto;
+        border-radius: 50%;
+        border: $secondary-color 3px solid;
+        width: 250px;
+        height: 250px;
+    }
+
+    // .bio class.
+    & .bio{ grid-area: bio; font-size: 1rem; }
+
+    // Boxed Border for each grid section. (.skill_* represents the div)
+    & .skill_1, & .skill_2, & .skill_3{
+        padding: 0.5rem;
+        background: lighten($primary-color, 5);
+        border-bottom: $secondary-color 5px solid;
+    }
+    // Skills within <ul> <li>
+    p.sk { text-indent: 50px; }
+
+    // #s* id's, attach the div area specified to the grid-area.
+    & #s1{ grid-area: skill_1; }
+    & #s2{ grid-area: skill_2; }
+    & #s3{ grid-area: skill_3; }
+
+    .bio .bioBlock{
+        // Make padded grey box for visual subtlty behind bio text.
+        padding: 0.5rem;
+        background: lighten($primary-color, 5);
+        border-bottom: $secondary-color 5px solid;
+    }
+}
+
+.footMe{
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-Text-Color($primary-color);
+    height: 60px;
+    /*
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: 'fL fC fR';
+    */
+}
+// <<<<< ------ END ABOUTME.HTML ------ >>>>>
+
+// <<<<< ------ BEGIN PROJECTS.HTML ------ >>>>>
+/* Global declarations. */
+
+h1.projectHeader{
+    text-align: center;
+    padding: 1rem;
+    background: #2b2b2b;
+    color: #FFF;
+    height: 70px;
+}
+
+.projectsContainer{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    & img{
+        width: 100%;
+        border: 3px #FFF solid;
+        &:hover{
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include ease-Out;
+        }
+    }
+}
+
+// .btn class within PROJECTS.HTML (project buttons).
+.btn{
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    &:hover{
+        background: $secondary-color;
+        color: set-Text-Color($secondary-color);
+    }
+}
+
+// .btn-dark inheriting from .btn class.
+.btn-dark{
+    @extend .btn;
+    background: darken($primary-color, 50);
+    color: #FFF;
+}
+
+// .btn-light inheriting from .btn class.
+.btn-light{
+    @extend .btn;
+    background: lighten($primary-color, 50);
+    color: #333;
+}
+
+// <<<<< ------ END PROJECTS.HTML ------ >>>>>
+
+
+// <<<<< ------ BEGIN BLOG.HTML ------ >>>>>
+/* Global declarations. */
+h1.blogHead{
+    text-align: center;
+    padding: 1rem;
+    background: #2b2b2b;
+    color: #FFF;
+    height: 60px;
+}
+
+div.allBlogs{
+    hr { height: 3px; }
+    /*&.h1, &.h2, &.h3{
+        text-align: center;
+        padding: 1rem;
+        background: #2b2b2b;
+        color: #FFF;
+        height: 60px;
+    }*/
+}
+
+// <<<<< ------ END BLOG.HTML ------ >>>>>
+
+// <<<<< ------ BEGIN CONTACT.HTML ----- >>>>>
+h1.conHead {
+    text-align: center;
+    padding: 1rem; background: #2b2b2b;
+    color: #FFF; height: 60px;
+}
+
+div#con-form_wrap{
+    margin: auto; width: 50%;
+    border: 3px solid lighten($primary-color, 50);
+}
+
+input.sendButton{ position: relative; left: 90%; bottom: 50px; }
+// <<<<< ------ END CONTACT.HTML ----- >>>>>
+// INCLUDE MEDIA QUERIES @ BOTTOM SO THAT DEFAULT SASS LOADS FIRST.
+@import 'mobile';

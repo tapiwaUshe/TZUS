@@ -1,0 +1,575 @@
+/* Must import @mixins from modularized _config.scss file. */
+/* SaSS variable declaration. */
+/* Mixin: Interface/Class to apply multiple SASS properties easily. */
+/*
+// menuClosed false; Assume the menu is closed, default SASS.
+$menuClosed: false;
+@mixin menuSpan{
+    @if !$menuClosed{
+        &#list{
+            @if 
+        }
+    }
+}
+*/
+/* SCSS module for the menu button */
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu-btn .btn-line {
+  width: 28px;
+  height: 3px;
+  /* Top 0, Right 0, Bottom 5, Left 0 */
+  margin: 0 0 5px 0;
+  background: #FFF;
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu-btn.close {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.menu-btn.close .btn-line {
+  /* Grabs the [i]child of the nested class. */
+}
+
+.menu-btn.close .btn-line:nth-child(1) {
+  background: rgba(54, 181, 190, 0.584);
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.close .btn-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.close .btn-line:nth-child(3) {
+  background: rgba(54, 181, 190, 0.584);
+  -webkit-transform: rotate(-45deg) translate(7px, -6px);
+          transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+}
+
+.menu.show {
+  visibility: visible;
+}
+
+.menu-Brand, .menu-Nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  float: left;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.menu-Nav {
+  margin: 0;
+  padding: 0;
+  background: #373737;
+  list-style: none;
+  -webkit-transform: translate3d(0, -100%, 0);
+          transform: translate3d(0, -100%, 0);
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu-Nav.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.menu-Brand {
+  background: #444;
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu-Brand.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.menu-Brand .myPortrait {
+  width: 250px;
+  height: 250px;
+  background: url(TZUSLogo_2.png);
+  background-size: cover;
+  border-radius: 50%;
+  border: solid 3px #EECE1A;
+}
+
+.menu .nav-Item {
+  -webkit-transform: translate3d(600px, 0, 0);
+          transform: translate3d(600px, 0, 0);
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu .nav-Item.show {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.menu .nav-Item.current > a span {
+  color: #FFF;
+}
+
+.menu .nav-Item.current a:hover span.thirdary {
+  color: #EECE1A;
+}
+
+.menu .nav-Link {
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  font-weight: 300;
+  color: #EECE1A;
+  text-decoration: none;
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.menu .nav-Link a:hover {
+  -webkit-transform: translateX(30);
+          transform: translateX(30);
+}
+
+.menu .nav-Link a:hover span.thirdary {
+  color: #EECE1A;
+}
+
+/* Close .menu */
+.nav-Item:nth-child(1) {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+.nav-Item:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.nav-Item:nth-child(3) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.nav-Item:nth-child(4) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+/* No underscore OR .scss extension!*/
+/* '&' Ampersand is the SCSS nest operator, for more specific class/id grouping. */
+/* Element CSS Declaration */
+/* Any Element in CSS */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* CSS Properties for body tag. */
+body {
+  color: #FFF;
+  background: #444;
+  height: 100;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+body#bgImg {
+  /* Attach $home-image url linked variable to background. */
+  background: url(abstrology.jpg);
+  /* Keeps the image statically placed. */
+  background-attachment: fixed;
+  /* Covers the entire background (stretches img to capacity). */
+  background-size: cover;
+}
+
+body#bgImg:after {
+  /* Must insert content variable */
+  content: ' ';
+  /* Empty quotes if not necessary. */
+  /* Cover the entire body. */
+  position: absolute;
+  /* Start from top and right 0. */
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  text-decoration: none;
+  background: rgba(68, 68, 68, 0.4);
+}
+
+body#bgImg_ {
+  /* Attach $home-image url linked variable to background. */
+  background: url(abstrology.jpg);
+  /* Keeps the image statically placed. */
+  background-attachment: fixed;
+  /* Covers the entire background (stretches img to capacity). */
+  background-size: cover;
+  /* :after */
+}
+
+body#bgImg_:after {
+  /* Must insert content variable */
+  content: ' ';
+  /* Empty quotes if not necessary. */
+  /* Cover the entire body. */
+  position: absolute;
+  /* Start from top and right 0. */
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  text-decoration: none;
+  background: rgba(68, 68, 68, 0.6);
+}
+
+/* CSS Properties for 3 Header levels. */
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 400;
+  /* Nest the CLASS of lg-heading. Add properties */
+}
+
+h1.lg-Heading, h2.lg-Heading, h3.lg-Heading {
+  font-size: 6rem;
+}
+
+h1.sm-Heading, h2.sm-Heading, h3.sm-Heading {
+  margin-bottom: 2rem;
+  padding: 0.2rem 1rem;
+  background: #494949;
+  border: 0.5px;
+}
+
+/* Any links <a> tags */
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #EECE1A;
+  /* Parameters of Transition: WHAT -  Time - Motion */
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+a:hover span.thirdary {
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+  color: #EECE1A;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.secondary {
+  color: #EECE1A;
+}
+
+span.thirdary {
+  color: rgba(54, 181, 190, 0.584);
+}
+
+/* Main div element */
+main {
+  padding: 4rem;
+  /* Calculate 100vh and substract by the footer size to KEEP footer place. */
+  min-height: calc(100vh - 60px);
+  /* Any class of "icons" within main div. */
+  /* A Nested property of any main with id "home" */
+}
+
+main .socIcons {
+  margin-top: 1rem;
+  /* Any <a> link tag within main, within class icons. */
+}
+
+main .socIcons a {
+  padding: 0.4rem;
+  /* On hover on any link in main, within class icons */
+}
+
+main .socIcons a:hover {
+  color: #EECE1A;
+}
+
+main#home {
+  overflow: hidden;
+}
+
+main#home h1 {
+  margin-top: 20vh;
+}
+
+.info {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 30px;
+      grid-template-areas: "bio-Img bio bio" "skill_1 skill_2 skill_3";
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.info .bio-Img {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: bio-Img;
+  margin: auto;
+  border-radius: 50%;
+  border: #EECE1A 3px solid;
+  width: 250px;
+  height: 250px;
+}
+
+.info .bio {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: bio;
+  font-size: 1rem;
+}
+
+.info .skill_1, .info .skill_2, .info .skill_3 {
+  padding: 0.5rem;
+  background: #515151;
+  border-bottom: #EECE1A 5px solid;
+}
+
+.info p.sk {
+  text-indent: 50px;
+}
+
+.info #s1 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: skill_1;
+}
+
+.info #s2 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: skill_2;
+}
+
+.info #s3 {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: skill_3;
+}
+
+.info .bio .bioBlock {
+  padding: 0.5rem;
+  background: #515151;
+  border-bottom: #EECE1A 5px solid;
+}
+
+.footMe {
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: #FFF;
+  height: 60px;
+  /*
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: 'fL fC fR';
+    */
+}
+
+/* Global declarations. */
+h1.projectHeader {
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: #FFF;
+  height: 70px;
+}
+
+.projectsContainer {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 20px;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.projectsContainer img {
+  width: 100%;
+  border: 3px #FFF solid;
+}
+
+.projectsContainer img:hover {
+  opacity: 0.5;
+  border-color: #EECE1A;
+  -webkit-transition: all 0.5s ease-Out;
+  transition: all 0.5s ease-Out;
+}
+
+.btn, .btn-dark, .btn-light {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+}
+
+.btn:hover, .btn-dark:hover, .btn-light:hover {
+  background: #EECE1A;
+  color: #000;
+}
+
+.btn-dark {
+  background: black;
+  color: #FFF;
+}
+
+.btn-light {
+  background: #c4c4c4;
+  color: #333;
+}
+
+/* Global declarations. */
+h1.blogHead {
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: #FFF;
+  height: 60px;
+}
+
+div.allBlogs {
+  /*&.h1, &.h2, &.h3{
+        text-align: center;
+        padding: 1rem;
+        background: #2b2b2b;
+        color: #FFF;
+        height: 60px;
+    }*/
+}
+
+div.allBlogs hr {
+  height: 3px;
+}
+
+h1.conHead {
+  text-align: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: #FFF;
+  height: 60px;
+}
+
+div#con-form_wrap {
+  margin: auto;
+  width: 50%;
+  border: 3px solid #c4c4c4;
+}
+
+input.sendButton {
+  position: relative;
+  left: 90%;
+  bottom: 50px;
+}
+
+/* Widescreens */
+/* Requires the media to be a screen and with min 769px. 
+    (one above mediaMd) and max-width 1171. */
+/* Desktops & Laptops */
+/* Requires the media to be a screen and with min 769px. 
+    (one above mediaMd) and max-width 1171. */
+/* Tablets & Small Laptops */
+/* Requires the media to be a screen and with MX 500px. */
+@media screen and (max-width: 768px) {
+  main {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+  main .lg-Heading {
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  ul.menu-Nav,
+  div.menu-Brand {
+    float: none;
+    width: 100%;
+    min-height: 0;
+  }
+  ul.menu-Nav.show,
+  div.menu-Brand.show {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  .menu-Nav {
+    height: 75vh;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+    font-size: 24px;
+  }
+  .menu-Brand {
+    height: 25vh;
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+  .portrait {
+    background: url(me.jpg);
+    width: 150px;
+    height: 150px;
+  }
+  .info {
+        grid-template-areas: 'bio-Img' 'bio' 'skill_1' 'skill_2' 'skill_3';
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+/* Smartphones */
+/* Requires the media to be a screen and with MX 500px. */
+@media screen and (max-width: 500px) {
+  main#home h1 {
+    margin-top: 10vh;
+  }
+}
+/*# sourceMappingURL=main.css.map */
