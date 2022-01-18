@@ -54,6 +54,13 @@ header{ position: fixed; z-index: 2; width: 100%; }
 // span .thirdary assigns a color to a span with class name: thirdary.
 span.thirdary{ color: $thirdary-color; }
 
+span{
+    &.green{ color: green; }
+    &.grey{ color: rgb(85, 78, 78); }
+} 
+span.testeR{
+    text-align: center;
+}
 
 /* Main div element */
 main{

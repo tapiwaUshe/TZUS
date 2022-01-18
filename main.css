@@ -312,6 +312,18 @@ span.thirdary {
   color: rgba(54, 181, 190, 0.584);
 }
 
+span.green {
+  color: green;
+}
+
+span.grey {
+  color: #554e4e;
+}
+
+span.testeR {
+  text-align: center;
+}
+
 /* Main div element */
 main {
   padding: 4rem;
@@ -559,7 +571,7 @@ input.sendButton {
     height: 150px;
   }
   .info {
-        grid-template-areas: 'bio-Img' 'bio' 'skill_1' 'skill_2' 'skill_3';
+        grid-template-areas: 'bio-Img' 'bio' 'skill_1' 'skill_2' 'skill_3';
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
