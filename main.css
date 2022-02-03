@@ -316,6 +316,10 @@ span.green {
   color: green;
 }
 
+span.amber {
+  color: #ce4c01;
+}
+
 span.grey {
   color: #554e4e;
 }

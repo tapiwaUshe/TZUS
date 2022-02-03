@@ -56,6 +56,7 @@ span.thirdary{ color: $thirdary-color; }
 
 span{
     &.green{ color: green; }
+    &.amber{ color: rgb(206, 76, 1); }
     &.grey{ color: rgb(85, 78, 78); }
 } 
 span.testeR{
