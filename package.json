@@ -11,7 +11,7 @@
   "license": "MIT",
   "homepage": "https://tapiwaushe.github.io/TZUS/",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1"
   }
