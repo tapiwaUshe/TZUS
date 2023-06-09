@@ -4,7 +4,7 @@
   "description": "Responsive Portfolio Website v1",
   "main": "server.js",
   "scripts": {
-    "sass": "node-sass -w scss/ -o css/ --recursive",
+    "sass": "sass -w SCSS/ -o CSS/ --recursive",
     "deploy": "gh-pages -d dist/views"
   },
   "author": "Tapiwa Z. Ushe",
